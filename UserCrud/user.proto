@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package userPackage;
+
+service UserCrud{
+    rpc list(noparams) returns (Users);
+    rpc get(UserID) returns (UserRecord);
+    rpc createUser(UserRecord) returns (UserRecord);
+    rpc deleteUser(UserID) returns (response);
+}
+
+message noparams {}
+
+message response {
+    string message = 1;
+}
+
+message UserRecord {
+    int32 id = 1;
+    string name = 2;
+}
+
+message UserID {
+    int32 id = 1;
+}
+
+message Users {
+    repeated UserRecord users = 1;
+}
